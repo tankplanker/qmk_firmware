@@ -243,3 +243,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Bootmagic Lite key configuration */
 // #define BOOTMAGIC_LITE_ROW 0
 // #define BOOTMAGIC_LITE_COLUMN 0
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 3
+
+// EEPROM usage
+
+// TODO: refactor with new user EEPROM code (coming soon)
+#define EEPROM_MAGIC 0x451F
+#define EEPROM_MAGIC_ADDR 32
+// Bump this every time we change what we store
+// This will automatically reset the EEPROM with defaults
+// and avoid loading invalid data from the EEPROM
+#define EEPROM_VERSION 0x08
+#define EEPROM_VERSION_ADDR 34
+
+// Dynamic keymap starts after EEPROM version
+#define DYNAMIC_KEYMAP_EEPROM_ADDR 35
+
+// DYNAMIC_KEYMAP_MACRO_EEPROM_ADDR = DYNAMIC_KEYMAP_EEPROM_ADDR + (DYNAMIC_KEYMAP_LAYER_COUNT * MATRIX_ROWS * MATRIX_COLS * 2)
+// = 35 + (3 * 6 * 15 * 2) = 575
+#define DYNAMIC_KEYMAP_MACRO_EEPROM_ADDR 575
+// DYNAMIC_KEYMAP_MACRO_EEPROM_SIZE = 1024 - DYNAMIC_KEYMAP_MACRO_EEPROM_ADDR
+// = 1024-575 = 449
+#define DYNAMIC_KEYMAP_MACRO_EEPROM_SIZE 449
+#define DYNAMIC_KEYMAP_MACRO_COUNT 16

@@ -4,7 +4,7 @@
 
 A short description of the keyboard/project
 
-Keyboard Maintainer: [ai03](https://github.com/ai03_2725)  
+Keyboard Maintainer: [ai03](https://github.com/ai03-2725)  
 Hardware Supported: Firefly official PCB/Case
 Hardware Availability: Group buy
 

@@ -28,8 +28,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DESCRIPTION     A custom keyboard
 
 /* key matrix size */
-#define MATRIX_ROWS 2
-#define MATRIX_COLS 3
+#define MATRIX_ROWS 5
+#define MATRIX_COLS 14
 
 /*
  * Keyboard Matrix Assignments
@@ -41,8 +41,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
 */
-#define MATRIX_ROW_PINS { D0, D5 }
-#define MATRIX_COL_PINS { F1, F0, B0 }
+#define MATRIX_ROW_PINS { B1, B2, B3, F0, F1 }
+#define MATRIX_COL_PINS { F4, F7, F5, F6, C7, C6, B6, B5, B4, D7, D6, D4, D5, D3 }
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL*/
@@ -57,7 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BACKLIGHT_BREATHING
 #define BACKLIGHT_LEVELS 3
 
-#define RGB_DI_PIN E2
+#define RGB_DI_PIN D2
 #ifdef RGB_DI_PIN
   #define RGBLED_NUM 14
   #define RGBLIGHT_HUE_STEP 8
@@ -66,10 +66,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_LIMIT_VAL 230 /* The maximum brightness level */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 /*== all animations enable ==*/
-  #define RGBLIGHT_ANIMATIONS
+//   #define RGBLIGHT_ANIMATIONS
 /*== or choose animations ==*/
 //   #define RGBLIGHT_EFFECT_BREATHING
-//   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
+   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
 //   #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 //   #define RGBLIGHT_EFFECT_SNAKE
 //   #define RGBLIGHT_EFFECT_KNIGHT
@@ -77,7 +77,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //   #define RGBLIGHT_EFFECT_STATIC_GRADIENT
 //   #define RGBLIGHT_EFFECT_RGB_TEST
 //   #define RGBLIGHT_EFFECT_ALTERNATING
-// #endif
+#endif
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCING_DELAY 5

@@ -48,6 +48,3 @@
 #define RGBLIGHT_VAL_STEP 8
 #endif
 
-#define PERMISSIVE_HOLD
-#define TAPPING_TERM 220
-#define IGNORE_MOD_TAP_INTERRUPT

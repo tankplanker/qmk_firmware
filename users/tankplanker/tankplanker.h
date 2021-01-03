@@ -47,7 +47,8 @@ enum custom_keycodes {
   KC_PASTA7,
   KC_PASTA8,
   KC_PASTA9,
-  KC_PASTA10
+  KC_PASTA10,
+  NEW_SAFE_RANGE
 };
 
 //Tap dance keys
@@ -71,4 +72,39 @@ enum tapdance {
     V_CTL
 };
 
+//for the x tap dance. Put it here so it can be used in any keymap
+void tab_finished (qk_tap_dance_state_t *state, void *user_data);
+void tab_reset (qk_tap_dance_state_t *state, void *user_data);
+void ent_finished (qk_tap_dance_state_t *state, void *user_data);
+void ent_reset (qk_tap_dance_state_t *state, void *user_data);
+void ls_finished (qk_tap_dance_state_t *state, void *user_data);
+void ls_reset (qk_tap_dance_state_t *state, void *user_data);
+void bck_finished (qk_tap_dance_state_t *state, void *user_data);
+void bck_reset (qk_tap_dance_state_t *state, void *user_data);
+void del_finished (qk_tap_dance_state_t *state, void *user_data);
+void del_reset (qk_tap_dance_state_t *state, void *user_data);
+void rs_finished (qk_tap_dance_state_t *state, void *user_data);
+void rs_reset (qk_tap_dance_state_t *state, void *user_data);
+void end_finished (qk_tap_dance_state_t *state, void *user_data);
+void end_reset (qk_tap_dance_state_t *state, void *user_data);
+void home_finished (qk_tap_dance_state_t *state, void *user_data);
+void home_reset (qk_tap_dance_state_t *state, void *user_data);
+void pup_finished (qk_tap_dance_state_t *state, void *user_data);
+void pup_reset (qk_tap_dance_state_t *state, void *user_data);
+void pdown_finished (qk_tap_dance_state_t *state, void *user_data);
+void down_reset (qk_tap_dance_state_t *state, void *user_data);
+void ra_finished (qk_tap_dance_state_t *state, void *user_data);
+void ra_reset (qk_tap_dance_state_t *state, void *user_data);
+void la_finished (qk_tap_dance_state_t *state, void *user_data);
+void la_reset (qk_tap_dance_state_t *state, void *user_data);
+void ua_finished (qk_tap_dance_state_t *state, void *user_data);
+void ua_reset (qk_tap_dance_state_t *state, void *user_data);
+void da_finished (qk_tap_dance_state_t *state, void *user_data);
+void da_reset (qk_tap_dance_state_t *state, void *user_data);
+void x_finished (qk_tap_dance_state_t *state, void *user_data);
+void x_reset (qk_tap_dance_state_t *state, void *user_data);
+void c_finished (qk_tap_dance_state_t *state, void *user_data);
+void c_reset (qk_tap_dance_state_t *state, void *user_data);
+void v_finished (qk_tap_dance_state_t *state, void *user_data);
+void v_reset (qk_tap_dance_state_t *state, void *user_data);
 

@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "qmk compile",
+            "type": "shell",
+            "command": "qmk compile -kb ${relativeFileDirname} -km tankplanker",
+            "problemMatcher": []
+            "script": "qmk compile"
+        },
+        {
+            "label": "qmk flash",
+            "type": "shell",
+            "command": "qmk flash -kb ${relativeFileDirname} -km tankplanker",
+            "problemMatcher": []
+            "script": "qmk flash"
+        }
+    ]
+}

@@ -5,4 +5,4 @@ LTO_ENABLE =yes
 Space_Cadet = no
 POINTING_DEVICE_ENABLE = no
 EXTRAFLAGS += -flto
-MACROS_ENABLED = yes
+MACROS_ENABLED = no

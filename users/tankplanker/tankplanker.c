@@ -4,50 +4,15 @@
 // end
 
 
-__attribute__((weak)) void matrix_init_keymap(void) {}
+//__attribute__((weak)) void matrix_init_keymap(void) {}
 //void matrix_init_user(void) { matrix_init_keymap(); }
 
-__attribute__((weak)) void matrix_scan_keymap(void) {}
+//__attribute__((weak)) void matrix_scan_keymap(void) {}
 
-void matrix_scan_user(void) { matrix_scan_keymap(); }
+//void matrix_scan_user(void) { matrix_scan_keymap(); }
 
-__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
+//__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
 
-//for the x tap dance. Put it here so it can be used in any keymap
-void tab_finished (qk_tap_dance_state_t *state, void *user_data);
-void tab_reset (qk_tap_dance_state_t *state, void *user_data);
-void ent_finished (qk_tap_dance_state_t *state, void *user_data);
-void ent_reset (qk_tap_dance_state_t *state, void *user_data);
-void ls_finished (qk_tap_dance_state_t *state, void *user_data);
-void ls_reset (qk_tap_dance_state_t *state, void *user_data);
-void bck_finished (qk_tap_dance_state_t *state, void *user_data);
-void bck_reset (qk_tap_dance_state_t *state, void *user_data);
-void del_finished (qk_tap_dance_state_t *state, void *user_data);
-void del_reset (qk_tap_dance_state_t *state, void *user_data);
-void rs_finished (qk_tap_dance_state_t *state, void *user_data);
-void rs_reset (qk_tap_dance_state_t *state, void *user_data);
-void end_finished (qk_tap_dance_state_t *state, void *user_data);
-void end_reset (qk_tap_dance_state_t *state, void *user_data);
-void home_finished (qk_tap_dance_state_t *state, void *user_data);
-void home_reset (qk_tap_dance_state_t *state, void *user_data);
-void pup_finished (qk_tap_dance_state_t *state, void *user_data);
-void pup_reset (qk_tap_dance_state_t *state, void *user_data);
-void pdown_finished (qk_tap_dance_state_t *state, void *user_data);
-void down_reset (qk_tap_dance_state_t *state, void *user_data);
-void ra_finished (qk_tap_dance_state_t *state, void *user_data);
-void ra_reset (qk_tap_dance_state_t *state, void *user_data);
-void la_finished (qk_tap_dance_state_t *state, void *user_data);
-void la_reset (qk_tap_dance_state_t *state, void *user_data);
-void ua_finished (qk_tap_dance_state_t *state, void *user_data);
-void ua_reset (qk_tap_dance_state_t *state, void *user_data);
-void da_finished (qk_tap_dance_state_t *state, void *user_data);
-void da_reset (qk_tap_dance_state_t *state, void *user_data);
-void x_finished (qk_tap_dance_state_t *state, void *user_data);
-void x_reset (qk_tap_dance_state_t *state, void *user_data);
-void c_finished (qk_tap_dance_state_t *state, void *user_data);
-void c_reset (qk_tap_dance_state_t *state, void *user_data);
-void v_finished (qk_tap_dance_state_t *state, void *user_data);
-void v_reset (qk_tap_dance_state_t *state, void *user_data);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -115,12 +80,12 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 void matrix_init_user(void) {
   // set Power LED to output and low
-  setPinOutput(B6);
+ /* setPinOutput(B6);
   writePinHigh(B6);
   setPinOutput(B5);
   writePinHigh(B5);
   setPinOutput(B4);
-  writePinHigh(B4);
+  writePinHigh(B4);*/
 }
 
 layer_state_t layer_state_set_user(layer_state_t state)

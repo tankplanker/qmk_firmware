@@ -11,14 +11,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy of the GNU General Public Licensegg
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-   #define PERMISSIVE_HOLD
-   #define TAPPING_TERM 220
-
-   #define IGNORE_MOD_TAP_INTERRUPT
 
 #ifndef NO_DEBUG
    #define NO_DEBUG
@@ -27,3 +23,4 @@
    #define NO_PRINT
 #endif // !NO_PRINT
 #define NO_ACTION_ONESHOT
+#define RGBLIGHT_ANIMATIONS

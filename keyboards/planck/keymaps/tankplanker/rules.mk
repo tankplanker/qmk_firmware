@@ -17,7 +17,7 @@ MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = yes           # Audio output on port C6
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
+RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight.
 WS2812_DRIVER = bitbang
 API_SYSEX_ENABLE = no
 
@@ -26,14 +26,17 @@ SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 #SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
 
 # SERIAL_LINK_ENABLE = yes
-ENCODER_ENABLE = yes
+ENCODER_ENABLE = no
 DIP_SWITCH_ENABLE = yes
 
-LAYOUTS = LAYOUT_planck_1x2uC
-LAYOUTS_HAS_RGB = no
+LAYOUTS = LAYOUT_planck_2x2uC
+LAYOUTS_HAS_RGB = yes
 
 TAP_DANCE_ENABLE=yes
-LINK_TIME_OPTIMIZATION_ENABLE =yes 
+LINK_TIME_OPTIMIZATION_ENABLE =yes
 Space_Cadet = no
 POINTING_DEVICE_ENABLE = no
 EXTRAFLAGS += -flto
+RGBLIGHT_ANIMATIONS=yes
+RGBLED_NUM = 99
+

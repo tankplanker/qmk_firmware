@@ -9,9 +9,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT( /* Qwerty */
     KC_1, 	 KC_2,    KC_3,    KC_4,    KC_5,    KC_6,
     KC_GESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_SLSH,
-    TD(TABCAP), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, TD(BCK_CTL),
-    TD(L_SHFT), KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD(UA_CTL), LT(_RAISE, KC_ENTER),
-    KC_LCTRL,KC_LGUI,KC_LALT,KC_NO,     LT(_LOWER, KC_SPC),LT(_LOWER, KC_SPC), KC_RALT,TD(LA_CTL), TD(DA_CTL), TD(RA_CTL)
+    KC_TAB, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, TD(BCK_CTL),
+    TD(L_SHFT), KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  TD(UA_CTL), TD(R_SHFT),
+    TD(X_CTL),TD(V_CTL),TD(C_CTL),KC_NO,    LT(_RAISE, KC_ENTER),LT(_LOWER, KC_SPC), KC_RALT,TD(LA_CTL), TD(DA_CTL), TD(RA_CTL)
   ),
   [1] = LAYOUT( /* LOWER */
     KC_PASTA1, 	 KC_PASTA2,    KC_PASTA3,    KC_PASTA4,    KC_PASTA5,    KC_PASTA6,
@@ -29,3 +29,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+
+void matrix_init_user(void) {
+  /*set Power LED to output and low*/
+ setPinOutput(B6);
+  writePinHigh(B6);
+  setPinOutput(B5);
+  writePinHigh(B5);
+  setPinOutput(B4);
+  writePinHigh(B4);
+}
+
+layer_state_t layer_state_set_user(layer_state_t state)
+{ if (layer_state_cmp(state, 1)) {
+        writePinLow(B4);
+        writePinHigh(B5);
+    } else if (state & (1<<2)) {
+        writePinLow(B5);
+        writePinHigh(B4);
+    } else if (state & (1<<3)) {
+        writePinHigh(B5);
+        writePinHigh(B4);
+    } else {
+        writePinLow(B5);
+        writePinLow(B4);
+    }
+    return state;
+}
+\\

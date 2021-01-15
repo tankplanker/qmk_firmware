@@ -78,58 +78,25 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
-void matrix_init_user(void) {
-  // set Power LED to output and low
- /* setPinOutput(B6);
-  writePinHigh(B6);
-  setPinOutput(B5);
-  writePinHigh(B5);
-  setPinOutput(B4);
-  writePinHigh(B4);*/
-}
-
-layer_state_t layer_state_set_user(layer_state_t state)
-{
-    if (layer_state_cmp(state, 1)) {
-        writePinLow(B4);
-        writePinHigh(B5);
-    } else if (state & (1<<2)) {
-        writePinLow(B5);
-        writePinHigh(B4);
-    } else if (state & (1<<3)) {
-        writePinHigh(B5);
-        writePinHigh(B4);
-    } else {
-        writePinLow(B5);
-        writePinLow(B4);
-    }
-    return state;
-}
 int cur_dance (qk_tap_dance_state_t *state) {
   if (state->count == 1) {
-    if (!state->interrupted && !state->pressed)  return SINGLE_TAP;
-    //key has not been interrupted, but they key is still held. Means you want to send a 'HOLD'.
-    else return SINGLE_HOLD;
+    if (state->interrupted) {
+      if (!state->pressed) return SINGLE_TAP;
+      else return SINGLE_HOLD;
+    }
+    else {
+      if (!state->pressed) return SINGLE_TAP;
+      else return SINGLE_HOLD;
+    }
   }
+  //If count = 2, and it has been interrupted - assume that user is trying to type the letter associated
+  //with single tap.
   else if (state->count == 2) {
-    /*
-     * DOUBLE_SINGLE_TAP is to distinguish between typing "pepper", and actually wanting a double tap
-     * action when hitting 'pp'. Suggested use case for this return value is when you want to send two
-     * keystrokes of the key, and not the 'double tap' action/macro.
-    */
-   /*
-   if (state->interrupted) return DOUBLE_SINGLE_TAP;
-    else if (state->pressed) return DOUBLE_HOLD;
-    else return DOUBLE_TAP;
-    */
-  if (state->pressed) return DOUBLE_HOLD;
+    if (state->pressed) return DOUBLE_HOLD;
     else return DOUBLE_TAP;
   }
-  //Assumes no one is trying to type the same letter three times (at least not quickly).
-  //If your tap dance key is 'KC_W', and you want to type "www." quickly - then you will need to add
-  //an exception here to return a 'TRIPLE_SINGLE_TAP', and define that enum just like 'DOUBLE_SINGLE_TAP'
-  if (state->count == 3) {
-    if (state->interrupted || !state->pressed)  return TRIPLE_TAP;
+  else if (state->count == 3) {
+    if (!state->pressed) return TRIPLE_TAP;
     else return TRIPLE_HOLD;
   }
   else return 8; //magic number. At some point this method will expand to work for more presses
@@ -150,9 +117,9 @@ void tab_finished (qk_tap_dance_state_t *state, void *user_data) {
         break;
         };
     case SINGLE_HOLD: register_code(KC_TAB); break;
-    case DOUBLE_TAP: {
-        register_code(KC_CAPSLOCK);
-        };
+    //case DOUBLE_TAP: {
+     //   register_code(KC_CAPSLOCK);
+      //  };
   }
 }
 
@@ -163,9 +130,9 @@ void tab_reset (qk_tap_dance_state_t *state, void *user_data) {
         break;
         };
     case SINGLE_HOLD: unregister_code(KC_TAB); break;
-    case DOUBLE_TAP: {
-        unregister_code(KC_CAPSLOCK);
-        };
+   // case DOUBLE_TAP: {
+     //   unregister_code(KC_CAPSLOCK);
+     //   };
   }
   xtap_state.state = 0;
 }
@@ -176,10 +143,10 @@ void x_finished (qk_tap_dance_state_t *state, void *user_data) {
   switch (xtap_state.state) {
     case SINGLE_TAP: {
         register_code(KC_LCTRL);
-        register_code(KC_X);
+        register_code(KC_C);
         break;
         };
-    case SINGLE_HOLD: register_code(KC_LCTRL); break;
+    case SINGLE_HOLD: register_code(KC_LCTRL);
   }
 }
 
@@ -187,24 +154,20 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (xtap_state.state) {
     case SINGLE_TAP: {
         unregister_code(KC_LCTRL);
-        unregister_code(KC_X);
+        unregister_code(KC_C);
         break;
         };
-    case SINGLE_HOLD: unregister_code(KC_LCTRL); break;
+    case SINGLE_HOLD: unregister_code(KC_LCTRL);
   }
-  xtap_state.state = 0;
 }
-
-//copy
 void c_finished (qk_tap_dance_state_t *state, void *user_data) {
-  xtap_state.state = cur_dance(state);
   switch (xtap_state.state) {
     case SINGLE_TAP: {
         register_code(KC_LCTRL);
-        register_code(KC_C);
+        register_code(KC_X);
         break;
         };
-    case SINGLE_HOLD: register_code(KC_LALT); break;
+    case SINGLE_HOLD: register_code(KC_LALT);
   }
 }
 
@@ -212,10 +175,10 @@ void c_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (xtap_state.state) {
     case SINGLE_TAP: {
         unregister_code(KC_LCTRL);
-        unregister_code(KC_C);
+        unregister_code(KC_X);
         break;
         };
-    case SINGLE_HOLD: unregister_code(KC_LALT); break;
+    case SINGLE_HOLD: unregister_code(KC_LALT);
   }
   xtap_state.state = 0;
 }
@@ -229,7 +192,7 @@ void v_finished (qk_tap_dance_state_t *state, void *user_data) {
         register_code(KC_V);
         break;
         };
-    case SINGLE_HOLD: register_code(KC_LGUI); break;
+    case SINGLE_HOLD: register_code(KC_LGUI);
   }
 }
 
@@ -240,7 +203,7 @@ void v_reset (qk_tap_dance_state_t *state, void *user_data) {
         unregister_code(KC_V);
         break;
         };
-    case SINGLE_HOLD: unregister_code(KC_LGUI); break;
+    case SINGLE_HOLD: unregister_code(KC_LGUI);
   }
   xtap_state.state = 0;
 }
@@ -472,8 +435,6 @@ void pup_finished (qk_tap_dance_state_t *state, void *user_data) {
         };
     case SINGLE_HOLD: register_code(KC_PGUP); break;
     case DOUBLE_TAP:{
-        register_code(KC_LCTRL);
-        register_code(KC_PGUP);
         };
  }
 }
@@ -690,5 +651,105 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 };
 
 void keyboard_post_init_user(void) {
-
+    #ifdef RGBLIGHT_ENABLE
+        rgblight_set_clipping_range(10, 10);
+        rgblight_set_effect_range(0,20);
+        rgblight_sethsv_noeeprom(HSV_TEAL);
+        rgblight_set();
+    #endif  // RGBLIGHT_ENABLE
 };
+
+/*void shutdown_user(void) {
+#ifdef RGBLIGHT_ENABLE
+    rgblight_enable_noeeprom();
+    rgblight_mode_noeeprom(1);
+    rgblight_setrgb_red();
+#endif  // RGBLIGHT_ENABLE
+    shutdown_keymap();
+};*/
+
+__attribute__((weak)) void suspend_power_down_keymap(void) {}
+
+void suspend_power_down_user(void) { suspend_power_down_keymap(); }
+
+__attribute__((weak)) void suspend_wakeup_init_keymap(void) {}
+
+void suspend_wakeup_init_user(void) { suspend_wakeup_init_keymap(); }
+
+__attribute__((weak)) void matrix_scan_keymap(void) {}
+
+// No global matrix scan code, so just run keymap's matrix
+// scan function
+
+/*#ifdef ENCODER_ENABLE //master encoder section
+void encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) { //left encoder
+	switch (get_highest_layer(layer_state)) {
+	    case  _QWERTY:  //mouse wheel left right
+          if (clockwise) {
+	          tap_code16(KC_MS_WH_RIGHT);
+    			} else {
+      			tap_code16(KC_MS_WH_LEFT);
+          }
+          break;
+    	case _LOWER:  //undo/redo
+    			if (clockwise) {
+      			tap_code16(LCTL(KC_Z));
+    			} else {
+      			tap_code16(LCTL(KC_Y));
+    			}
+      	  break;
+    	case _RAISE: //RGB underglow select
+        setmyrgb(clockwise);
+      		break;
+      case _RGB: //RGB underglow select
+        setmyrgb(clockwise);
+      		break;
+      case  _TAB: // alt tab
+          tabalt(clockwise);
+      	break;
+	    default:  //mouse wheel left right
+          if (clockwise) {
+	          tap_code16(KC_MS_WH_RIGHT);
+    			} else {
+      			tap_code16(KC_MS_WH_LEFT);
+      			break;
+          }
+        }
+    } else if (index == 1) { //right encoder
+  	switch (get_highest_layer(layer_state)) {
+    		case  _QWERTY:
+    		if (clockwise) {
+      					tap_code(KC_MS_WH_DOWN);
+    					} else {
+      					tap_code(KC_MS_WH_UP);
+    					}
+      					break;
+    		case _LOWER:
+    			if (clockwise) {
+            		tap_code(KC_VOLU);
+    					} else {
+      					tap_code(KC_VOLD);
+    					}
+      					break;
+    		case _RAISE:
+          bakdel(clockwise);
+      					break;
+      case _RGB: //RGB underglow select
+        winarr(clockwise);
+      		break;
+      case  _TAB: // alt tab
+          tabalt(clockwise);
+      	break;
+		    default:
+			    if (clockwise) {
+      			tap_code(KC_MS_WH_DOWN);
+          } else{
+      			tap_code(KC_MS_WH_UP);
+    			}
+          break;
+    	}
+   	}
+}
+#endif*/
+

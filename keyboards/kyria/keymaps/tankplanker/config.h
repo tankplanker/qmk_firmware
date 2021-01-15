@@ -39,11 +39,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#endif
    #undef RGBLIGHT_LIMIT_VAL
    #define RGBLIGHT_LIMIT_VAL 255
-   #define PERMISSIVE_HOLD
-   #define TAPPING_TERM 220
    #define OLED_FONT_H "font_gmk_bad.h"
    #define OLED_DISPLAY_128X64
-   #define IGNORE_MOD_TAP_INTERRUPT
 
 #ifndef NO_DEBUG
    #define NO_DEBUG
@@ -52,4 +49,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    #define NO_PRINT
 #endif // !NO_PRINT
 #define NO_ACTION_ONESHOT
-#define ENCODER_RESOLUTION 2

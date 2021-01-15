@@ -1,11 +1,11 @@
-#userspace rules.mk for tankplanker
-SRC += tankplanker.c
+SRC += muse.c
+LAYOUTS_HAS_RGB = yes
+
 TAP_DANCE_ENABLE=yes
-LTO_ENABLE =yes
+LINK_TIME_OPTIMIZATION_ENABLE =yes
 Space_Cadet = no
 POINTING_DEVICE_ENABLE = no
 EXTRAFLAGS += -flto
-MACROS_ENABLED = no
 RGBLIGHT_ANIMATIONS=yes
-
-
+RGBLED_NUM = 99
+RGBLIGHT_ENABLE = yes

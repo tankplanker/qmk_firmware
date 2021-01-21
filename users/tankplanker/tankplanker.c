@@ -650,14 +650,14 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [V_CTL]     = ACTION_TAP_DANCE_FN_ADVANCED(NULL,v_finished, v_reset)
 };
 
-void keyboard_post_init_user(void) {
+/*void keyboard_post_init_user(void) {
     #ifdef RGBLIGHT_ENABLE
-        rgblight_set_clipping_range(10, 10);
-        rgblight_set_effect_range(0,20);
+       # rgblight_set_clipping_range(10, 10);
+        rgblight_set_effect_range(0,99);
         rgblight_sethsv_noeeprom(HSV_TEAL);
         rgblight_set();
     #endif  // RGBLIGHT_ENABLE
-};
+};*/
 
 /*void shutdown_user(void) {
 #ifdef RGBLIGHT_ENABLE

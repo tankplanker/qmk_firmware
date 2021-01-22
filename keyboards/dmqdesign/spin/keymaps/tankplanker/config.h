@@ -18,6 +18,9 @@
 
 #define RGBLIGHT_HUE_STEP 8
 #undef ENCODER_RESOLUTION
-#define ENCODER_RESOLUTION 2
-
+#define ENCODER_RESOLUTION 1
+#define RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_SLEEP
+#undef RGBLED_NUM
+#define RGBLED_NUM 99
 // place overrides here

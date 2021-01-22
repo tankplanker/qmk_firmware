@@ -14,7 +14,7 @@
 //__attribute__((weak)) bool process_record_keymap(uint16_t keycode, keyrecord_t *record) { return true; }
 
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+/*bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (record->event.pressed) {
     switch (keycode) {
@@ -71,7 +71,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     }
     return true;
-}
+}*/
 
 void persistent_default_layer_set(uint16_t default_layer) {
   eeconfig_update_default_layer(default_layer);
